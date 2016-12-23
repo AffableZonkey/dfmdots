@@ -1,0 +1,69 @@
+# [Created by task 2.5.0 7/12/2016 14:42:39]
+# Taskwarrior program configuration file.
+# For more documentation, see http://doc/task/rc.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=~/Code/taskwarrior-data
+
+# Color theme (uncomment one to use)
+#include /usr/share/doc/task/rc/light-16.theme
+#include /usr/share/doc/task/rc/light-256.theme
+#include /usr/share/doc/task/rc/dark-16.theme
+#include /usr/share/doc/task/rc/dark-256.theme
+#include /usr/share/doc/task/rc/dark-red-256.theme
+#include /usr/share/doc/task/rc/dark-green-256.theme
+#include /usr/share/doc/task/rc/dark-blue-256.theme
+#include /usr/share/doc/task/rc/dark-violets-256.theme
+#include /usr/share/doc/task/rc/dark-yellow-green.theme
+#include /usr/share/doc/task/rc/dark-gray-256.theme
+include /usr/share/doc/task/rc/dark-gray-blue-256.theme
+#include /usr/share/doc/task/rc/solarized-dark-256.theme
+#include /usr/share/doc/task/rc/solarized-light-256.theme
+#include /usr/share/doc/task/rc/no-color.theme
+task.project:Admin = black on bright cyan
+task.project:Coding = black on bright green
+task.project:HomeLab = cyan on bright black
+task.project:Fedora = blue on bright white
+task.project:Learning = gray22 on gray3
+
+## New user def att estimate - time it takes
+uda.estimate.type=duration
+report.meta.description=Simple Meta Report
+report.meta.columns=project.indented,tags,depends.list,id,description.desc,scheduled,estimate,due
+report.meta.labels=Project,Tags, ,ID,Desc,Sched,Dur,Due
+report.meta.sort=project+\/,due+
+report.meta.filter=status:pending project.isnt:Reading project.isnt:Ideas project.isnt:Learning project.isnt:Links
+
+## Short meta report
+report.smeta.description=Short Meta Report
+report.smeta.columns=project.indented,id,description.desc,scheduled,estimate,due
+report.smeta.labels=Project,ID,Desc,Sched,Dur,Due
+report.smeta.sort=project+\/,due+
+report.smeta.filter=status:pending project.isnt:Reading project.isnt:Ideas
+
+## New UDA URL for links to read up on
+uda.url.type=string
+uda.url.label=URL
+report.reading.description=Reading List Report
+report.reading.columns=tags,id,description,url
+report.reading.labels=Tags,ID,Desc,URL
+report.reading.filter=project:Reading
+
+## Habitica Reports
+report.habi.description=Habitica Tasks to add
+report.habi.columns=description.desc,end
+report.habi.filter=status:completed
+
+## Jobs to apply for
+report.apply.description=Jobs to apply for
+report.apply.columns=tags,id,description.desc
+report.apply.labels=Co,ID,Desc
+report.apply.filter=project:JobSearch
